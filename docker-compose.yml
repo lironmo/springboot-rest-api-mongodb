@@ -19,7 +19,8 @@ services:
     depends_on:
       - mongo-database
   mongo-database:
-    image: mongo
+    image: "mongo:4"
+    restart: unless-stopped
     container_name: my_mongodb
     environment: 
       MONGO_INITDB_ROOT_USERNAME: root 
