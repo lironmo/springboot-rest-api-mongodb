@@ -28,6 +28,9 @@ services:
       MONGO_INITDB_DATABASE: campaignsDB
     volumes:
       - ./init-mongo.js/:/docker-entrypoint-initdb.d/init-mongo.js:ro
-      - ./data/mongodb:/data/db
+      - mongodata:/data/db
     ports:
       - 27017:27017
+# We do not mount DB local path for WSL support. see https://github.com/docker-library/mongo/issues/74
+volumes:
+  mongodata:
